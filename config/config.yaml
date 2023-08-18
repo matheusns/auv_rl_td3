@@ -1,0 +1,21 @@
+desistek_saga:
+  hyperparameters:
+    alpha: 0.01 # Learning Rate
+    alpha_decay: 0.01
+    gamma: 1.0 
+    epsilon: 1.0 
+    epsilon_decay: 0.995 
+    epsilon_min: 0.01 
+    batch_size: 64 
+    episodes_training: 40
+    episodes_running: 10
+  episode:
+    max_offset: 15.0
+    min_offset: 0.05
+    timeout: 3000
+  pose:
+    target_pose:
+      position: [5.0, 22.0, -98.0]
+      orientation: [0.0, 0.0, 0.0] # euler
+    initial_position: [0.0, 0.0, 0.0] # todo: define with Professor
+    initial_orientation: [0.0, 0.0, 0.0] # euler
