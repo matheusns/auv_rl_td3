@@ -1,16 +1,20 @@
 #!/usr/bin/env python3.8
-
+import os
 import rospy
 import gymnasium as gym
 from stable_baselines3 import TD3
 from auv_rl_gym.task_envs.desistek_saga.auto_docking import AutoDocking
 
-
-class TD3Checker:
-    def __init__(self, timesteps):
+class TD3Trainer:
+    def __init__(self, timesteps, log_dir):
         self.timesteps = timesteps
-        self.env = gym.make('DesistekSagaAutoDocking-v0')
-        self.model = TD3("MlpPolicy", self.env, verbose=1)
+        # self.env = gym.make('DesistekSagaAutoDocking-v0')
+        self.env = gym.make('MountainCarContinuous-v0')
+        self.model = TD3("MlpPolicy", 
+                        self.env, verbose=2,
+                        train_freq=(1,"episode"),
+                        tensorboard_log=log_dir,
+                        device="auto")
 
     def learn(self):
         self.model.learn(total_timesteps=self.timesteps)
@@ -19,29 +23,11 @@ if __name__ == "__main__":
     rospy.init_node('env_checker', anonymous=True)
     
     timesteps = rospy.get_param("/desistek_saga/learn/timesteps")
-
-    td3 = TD3Checker(timesteps)
+    log_dir = rospy.get_param("/desistek_saga/log/dir")
+    
+    td3 = TD3Trainer(timesteps, log_dir)
     initial_time = rospy.Time.now()
     td3.learn()
     elapsed_time = rospy.Time.now() - initial_time
     rospy.loginfo("Elapsed time: %s", elapsed_time)
     rospy.spin()
-    
-    
-    import gymnasium as gym
-
-
-env = gym.make("CartPole-v1")
-
-
-vec_env = model.get_env()
-obs = vec_env.reset()
-for i in range(1000):
-    action, _states = model.predict(obs, deterministic=True)
-    obs, reward, done, info = vec_env.step(action)
-    vec_env.render()
-    # VecEnv resets automatically
-    # if done:
-    #   obs = env.reset()
-
-env.close()

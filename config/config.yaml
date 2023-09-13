@@ -1,6 +1,6 @@
 desistek_saga:
   learn:
-    timesteps: 2
+    timesteps: 200000
   episode:
     max_offset: 15.0
     min_offset: 0.5
@@ -13,3 +13,6 @@ desistek_saga:
     target_pose:
       position: [5.0, 22.0, -98.0]
       orientation: [0.0, 0.0, 0.0] # euler
+  log:
+    dir: /log/td3
+    dir: /home/matheusns/log/td3
