@@ -8,8 +8,7 @@ from auv_rl_gym.task_envs.desistek_saga.auto_docking import AutoDocking
 class TD3Trainer:
     def __init__(self, timesteps, log_dir):
         self.timesteps = timesteps
-        # self.env = gym.make('DesistekSagaAutoDocking-v0')
-        self.env = gym.make('MountainCarContinuous-v0')
+        self.env = gym.make('DesistekSagaAutoDocking-v0')
         self.model = TD3("MlpPolicy", 
                         self.env, verbose=2,
                         train_freq=(1,"episode"),
