@@ -2,6 +2,6 @@
     <include file="$(find auv_rl_gym)/launch/auv_env.launch"/>
 
     <rosparam command="load" file="$(find auv_rl_td3)/config/config.yaml" />
-    <node pkg="auv_rl_td3" name="td3_docking_node" type="traing.py" output="screen">
+    <node pkg="auv_rl_td3" name="td3_docking_node" type="train.py" output="screen">
     </node>
 </launch>
