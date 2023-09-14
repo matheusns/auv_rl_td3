@@ -2,17 +2,17 @@ desistek_saga:
   learn:
     timesteps: 200000
   episode:
-    max_offset: 15.0
-    min_offset: 0.5
-    timeout: 120.0
+    max_offset: 50.0
+    min_offset: 0.1
+    timeout: 3000.0
   pose:
-    init_position_range_x: [0.0, 4.0]
-    init_position_range_y: [20.0, 23.0]
-    init_position_range_z: [-98.0, -96.0]
-    initial_orientation_range_yaw: [-0.5, 0.5]
+    init_position_range_x: [-10, 10]
+    init_position_range_y: [-10, 10]
+    init_position_range_z: [-98.0, -90.0]
+    initial_orientation_range_yaw: [-3.14, 3.14]
     target_pose:
       position: [5.0, 22.0, -98.0]
-      orientation: [0.0, 0.0, 0.0] # euler
+      orientation: [0.0, 0.0, 0.0]
   log:
     model_name: first_model.rl
     dir: /home/matheusns/log/td3
