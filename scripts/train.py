@@ -17,16 +17,22 @@ class TD3Trainer:
 
     def learn(self):
         self.model.learn(total_timesteps=self.timesteps)
+    def save(self, path):
+        self.model.save(path)
+        vec_env = self.model.get_env()
 
 if __name__ == "__main__":
     rospy.init_node('env_checker', anonymous=True)
     
     timesteps = rospy.get_param("/desistek_saga/learn/timesteps")
     log_dir = rospy.get_param("/desistek_saga/log/dir")
+    save_dir = rospy.get_param("/desistek_saga/log/save")
+    model_name = rospy.get_param("/desistek_saga/log/model_name")
     
     td3 = TD3Trainer(timesteps, log_dir)
     initial_time = rospy.Time.now()
     td3.learn()
+    td3.save(os.path.join(save_dir, model_name))
     elapsed_time = rospy.Time.now() - initial_time
     rospy.loginfo("Elapsed time: %s", elapsed_time)
     rospy.spin()

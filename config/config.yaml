@@ -4,7 +4,7 @@ desistek_saga:
   episode:
     max_offset: 15.0
     min_offset: 0.5
-    timeout: 60.0
+    timeout: 120.0
   pose:
     init_position_range_x: [0.0, 4.0]
     init_position_range_y: [20.0, 23.0]
@@ -14,5 +14,6 @@ desistek_saga:
       position: [5.0, 22.0, -98.0]
       orientation: [0.0, 0.0, 0.0] # euler
   log:
-    dir: /log/td3
+    model_name: first_model.rl
     dir: /home/matheusns/log/td3
+    save: /home/matheusns/log/models/td3
