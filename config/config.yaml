@@ -4,11 +4,11 @@ desistek_saga:
   episode:
     max_offset: 50.0
     min_offset: 0.1
-    timeout: 3000.0
+    timeout: 300.0
   pose:
-    init_position_range_x: [-10, 10]
-    init_position_range_y: [-10, 10]
-    init_position_range_z: [-98.0, -90.0]
+    init_position_range_x: [-5, 15]
+    init_position_range_y: [12, 32]
+    init_position_range_z: [-98.0, -88.0]
     initial_orientation_range_yaw: [-3.14, 3.14]
     target_pose:
       position: [5.0, 22.0, -98.0]
